@@ -1,0 +1,480 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Onward Host Homes</title>
+  <meta name="description" content="Onward Host Homes — supportive host home services focused on dignity, community, and care." />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --border: rgba(255,255,255,0.14);
+      --accent: #7dd3fc;
+      --accent2: #a7f3d0;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(125, 211, 252, 0.16), transparent 60%),
+        radial-gradient(1000px 600px at 90% 10%, rgba(167, 243, 208, 0.14), transparent 55%),
+        linear-gradient(180deg, #070b14, var(--bg));
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 22px; }
+
+    /* Top bar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(7, 11, 20, 0.6);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 22px;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: var(--shadow);
+    }
+    .brand h1 {
+      font-size: 16px;
+      margin: 0;
+      letter-spacing: 0.5px;
+      text-transform: lowercase;
+    }
+    nav {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+    }
+    nav a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 34px 0 14px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      nav { display: none; } /* simple mobile placeholder */
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .hero h2 {
+      margin: 0 0 10px;
+      font-size: 44px;
+      line-height: 1.08;
+      letter-spacing: -0.7px;
+      text-transform: lowercase;
+    }
+    .hero p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .btn.primary {
+      border: none;
+      background: linear-gradient(135deg, rgba(125,211,252,0.9), rgba(167,243,208,0.85));
+      color: #061018;
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(125, 211, 252, 0.12);
+      border: 1px solid rgba(125, 211, 252, 0.25);
+      color: var(--text);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    /* Quick info */
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+    .list li {
+      padding: 10px 12px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      border-radius: 14px;
+      background: rgba(0,0,0,0.08);
+    }
+
+    /* Sections */
+    section { padding: 16px 0; }
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 22px;
+      text-transform: lowercase;
+      letter-spacing: -0.2px;
+    }
+    .muted { color: var(--muted); }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 900px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* Form */
+    form { display: grid; gap: 12px; }
+    label { font-weight: 600; font-size: 14px; }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      outline: none;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    .help {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      margin-top: -6px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 26px 0 40px;
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 14px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    .small { font-size: 12px; color: rgba(255,255,255,0.62); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .pill {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="#top" aria-label="Onward Host Homes">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>onward host homes</h1>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="#about">about</a>
+        <a href="#services">services</a>
+        <a href="#hosts">become a host</a>
+        <a href="#referrals">referrals</a>
+        <a href="#contact">contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="card">
+          <div class="badge">placeholder site • launching soon</div>
+          <h2>supportive host home services, rooted in dignity.</h2>
+          <p>
+            Onward Host Homes connects individuals with welcoming households and thoughtful supports.
+            Our focus is safety, stability, and community—so people can thrive at home.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#contact">contact us</a>
+            <a class="btn" href="#hosts">become a host</a>
+            <a class="btn" href="#referrals">make a referral</a>
+          </div>
+
+          <p class="help" style="margin-top:14px;">
+            Tip: Replace the placeholders below with your phone, email, service area, and licensing/Medicaid details.
+          </p>
+        </div>
+
+        <aside class="card">
+          <h3 class="section-title" style="margin-top:0;">quick info</h3>
+          <ul class="list">
+            <li><strong>service area:</strong> <span class="muted">[insert counties/cities served]</span></li>
+            <li><strong>phone:</strong> <span class="muted">[insert phone number]</span></li>
+            <li><strong>email:</strong> <span class="muted">[insert email address]</span></li>
+            <li><strong>hours:</strong> <span class="muted">[insert hours]</span></li>
+            <li><strong>address:</strong> <span class="muted">[insert mailing address]</span></li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">person-centered</span>
+            <span class="pill">community-based</span>
+            <span class="pill">trauma-informed</span>
+            <span class="pill">respect & choice</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="card">
+        <h3 class="section-title">about</h3>
+        <p class="muted">
+          Onward Host Homes is a host home agency that supports individuals with disabilities in family-style homes.
+          We work alongside participants, guardians, case managers, and community partners to build safe, supportive placements.
+        </p>
+        <div class="grid-3" style="margin-top:14px;">
+          <div class="card" style="padding:16px;">
+            <strong>our mission</strong>
+            <p class="muted" style="margin:8px 0 0;">
+              [insert a 1–2 sentence mission statement]
+            </p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <strong>our values</strong>
+            <p class="muted" style="margin:8px 0 0;">
+              dignity • choice • safety • inclusion • accountability
+            </p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <strong>who we serve</strong>
+            <p class="muted" style="margin:8px 0 0;">
+              [insert population served, age range, waiver/program type if applicable]
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="card">
+        <h3 class="section-title">services</h3>
+        <p class="muted">
+          [Replace this section with your exact service list based on your program approval/contracting.]
+        </p>
+
+        <div class="grid-3" style="margin-top:14px;">
+          <div class="card" style="padding:16px;">
+            <strong>host home placement</strong>
+            <p class="muted" style="margin:8px 0 0;">Matching, onboarding, and ongoing support for stable placements.</p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <strong>care coordination</strong>
+            <p class="muted" style="margin:8px 0 0;">Collaboration with the team to support goals, appointments, and services.</p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <strong>skills & community support</strong>
+            <p class="muted" style="margin:8px 0 0;">Support for daily living, routines, and community involvement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hosts">
+      <div class="card">
+        <h3 class="section-title">become a host home provider</h3>
+        <p class="muted">
+          Interested in opening your home? Hosts provide a stable, supportive environment and partner with our team.
+          We offer guidance, training, and ongoing support.
+        </p>
+
+        <div class="grid-3" style="margin-top:14px;">
+          <div class="card" style="padding:16px;">
+            <strong>basic requirements</strong>
+            <p class="muted" style="margin:8px 0 0;">
+              [insert background checks, home standards, training, availability]
+            </p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <strong>what we provide</strong>
+            <p class="muted" style="margin:8px 0 0;">
+              onboarding • coaching • regular check-ins • 24/7 support line (if applicable)
+            </p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <strong>next steps</strong>
+            <p class="muted" style="margin:8px 0 0;">
+              Submit the interest form below and we’ll reach out to schedule a conversation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="referrals">
+      <div class="card">
+        <h3 class="section-title">referrals</h3>
+        <p class="muted">
+          To make a referral, please share basic needs, preferences, and any safety considerations. We’ll follow up
+          to gather details and discuss fit.
+        </p>
+        <ul class="list" style="margin-top:14px;">
+          <li><strong>participant needs:</strong> <span class="muted">[mobility, behavioral supports, medical needs, etc.]</span></li>
+          <li><strong>home preferences:</strong> <span class="muted">[pets, roommates, location, accessibility, etc.]</span></li>
+          <li><strong>timeline:</strong> <span class="muted">[desired move date / urgency]</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="card">
+        <h3 class="section-title">contact</h3>
+        <p class="muted">
+          This is a placeholder form. To make it functional, connect it to an email service (Formspree, Netlify Forms),
+          or replace with a link to a Google Form.
+        </p>
+
+        <form onsubmit="event.preventDefault(); alert('Thanks! This placeholder form is not connected yet.');">
+          <div>
+            <label for="name">name</label>
+            <input id="name" name="name" placeholder="Your name" autocomplete="name" />
+          </div>
+
+          <div>
+            <label for="email">email</label>
+            <input id="email" name="email" placeholder="you@example.com" type="email" autocomplete="email" />
+          </div>
+
+          <div>
+            <label for="topic">i’m contacting you about</label>
+            <select id="topic" name="topic">
+              <option>General question</option>
+              <option>Becoming a host home provider</option>
+              <option>Referral / placement inquiry</option>
+              <option>Partnership / community</option>
+              <option>Employment / recruiting</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message">message</label>
+            <textarea id="message" name="message" placeholder="How can we help?"></textarea>
+          </div>
+
+          <button class="btn primary" type="submit">send message</button>
+
+          <p class="help">
+            Prefer email or phone? <strong>Email:</strong> [insert email] • <strong>Phone:</strong> [insert phone]
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap" style="padding:0;">
+        <div class="footer-grid">
+          <div>
+            <strong>onward host homes</strong>
+            <p class="small" style="margin:8px 0 0;">
+              [Insert licensing/waiver/program statements if applicable.]<br/>
+              © <span id="year"></span> Onward Host Homes. All rights reserved.
+            </p>
+          </div>
+          <div>
+            <p class="small" style="margin:0;">
+              <strong>privacy note:</strong> Please do not include sensitive medical details in this form.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
